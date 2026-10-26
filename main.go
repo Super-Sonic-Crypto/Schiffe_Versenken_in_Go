@@ -13,18 +13,17 @@ func main() {
 }
 
 func RenderBoard(BoardSize int, PlayingField [10][10]string) {
-
 	for i := range BoardSize {
 		for j := range 10 {
 			PlayingField[i][j] = "-"
 		}
 	}
 
+	//=====	Ausgabe Spielfeld =====
 	fmt.Print("  ")
 	for coordinate := 'A'; coordinate < 'A'+10; coordinate++ {
 		fmt.Printf("  %c", coordinate)
 	}
-
 	fmt.Println()
 
 	for i := range BoardSize {
@@ -39,4 +38,5 @@ func RenderBoard(BoardSize int, PlayingField [10][10]string) {
 		}
 		fmt.Println()
 	}
+	//=====
 }
