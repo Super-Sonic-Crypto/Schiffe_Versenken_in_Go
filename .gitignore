@@ -1,1 +1,10 @@
-.idea
+#IntelliJ ignore
+.idea/
+*.iml
+#Ignore Go Files
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+Schiffe_Versenken
