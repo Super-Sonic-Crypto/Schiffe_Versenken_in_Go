@@ -25,17 +25,19 @@ func ParseCoordinate(Input *bufio.Scanner, RunThrough int) (x, y int, err error)
 		x = int(CoordinateInput[0] - 'A')
 		y, err = strconv.Atoi(CoordinateInput[1:])
 
-		if err != nil {
+		y = y - 1
+
+		// Switch case für alle Fehler Zustände beim Eintippen
+		switch {
+		case err != nil:
 			fmt.Printf("Fehler! Erst der Buchstabe dann die Zahl. \n\n")
 			continue
-		}
 
-		// Zwei if-Abfragen, wegen der Übersicht um genauere Fehlermeldung zu erhalten, was Falsch war
-		if y > 10 || y < 1 {
+		case y > 9:
 			fmt.Printf("Fehler! Y muss von 1-10 gewählt werden. \n\n")
 			continue
-		}
-		if x > 9 {
+
+		case x > 9:
 			fmt.Printf("Fehler! X muss von A-J gewählt werden. \n\n")
 			continue
 		}
