@@ -18,9 +18,13 @@ package main
 import "fmt"
 
 func RenderBoard(BoardSize int, PlayingField [10][10]string) {
+
+	// Befüllung des Arrays am Anfang mit "-" (leer)
 	for i := range BoardSize {
-		for j := range 10 {
-			PlayingField[i][j] = "-"
+		for j := range BoardSize {
+			if PlayingField[i][j] == "" {
+				PlayingField[i][j] = "-"
+			}
 		}
 	}
 

@@ -15,7 +15,7 @@ func ParseCoordinate(Input *bufio.Scanner, RunThrough int) (x, y int, err error)
 		fmt.Printf("%d. Koordinate beginnend mit dem Buchstabe (Spalte) eingeben (z.B. A1): ", RunThrough)
 		Input.Scan()
 		CoordinateInput := Input.Text()
-		CoordinateInput = strings.ToUpper(CoordinateInput) //Eingabe wird zu großbuchstabe gezwungen
+		CoordinateInput = strings.ToUpper(CoordinateInput) //Eingabe wird zu Großbuchstabe gezwungen
 
 		if len(CoordinateInput) > 3 || len(CoordinateInput) < 2 {
 			fmt.Printf("Fehler! bitte mindestens 2 oder höchstens 3 Zeichen eingeben! \n\n")
@@ -24,8 +24,7 @@ func ParseCoordinate(Input *bufio.Scanner, RunThrough int) (x, y int, err error)
 
 		x = int(CoordinateInput[0] - 'A')
 		y, err = strconv.Atoi(CoordinateInput[1:])
-
-		y = y - 1
+		y = y - 1 // Array zählt von 0-9, für einfachere Rechnung 1 wird zu 0, usw.
 
 		// Switch case für alle Fehler Zustände beim Eintippen
 		switch {
