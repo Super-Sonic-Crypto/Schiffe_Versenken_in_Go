@@ -17,19 +17,25 @@ package main
 
 import "fmt"
 
-func RenderBoard(BoardSize int, PlayingField [10][10]string) {
+func RenderBoard(BoardSize int, PlayingField [10][10]string, RadarField [10][10]string) {
 
 	// Befüllung des Arrays am Anfang mit "-" (leer)
 	for i := range BoardSize {
 		for j := range BoardSize {
+			// Abfragen sind getrennt und nicht &&, sonst würde nach dem 1. Beschreiben von PlayingField unwahr sein
 			if PlayingField[i][j] == "" {
 				PlayingField[i][j] = "-"
+			}
+
+			if RadarField[i][j] == "" {
+				RadarField[i][j] = "-"
 			}
 		}
 	}
 
 	//=====	Ausgabe Spielfeld =====
-	fmt.Print("  ")
+	fmt.Printf("Dein Spielfeld: \n")
+	fmt.Printf("  ")
 	for coordinate := 'A'; coordinate < 'A'+10; coordinate++ {
 		fmt.Printf("  %c", coordinate)
 	}
@@ -44,6 +50,29 @@ func RenderBoard(BoardSize int, PlayingField [10][10]string) {
 
 		for j := range BoardSize {
 			fmt.Print(PlayingField[i][j], "  ")
+		}
+		fmt.Println()
+	}
+	fmt.Printf("\n\n")
+	// =====
+
+	// ===== Ausgabe Radarfeld =====
+	fmt.Printf("Radarfeld: \n")
+	fmt.Printf("  ")
+	for coordinate := 'A'; coordinate < 'A'+10; coordinate++ {
+		fmt.Printf("  %c", coordinate)
+	}
+	fmt.Println()
+
+	for i := range BoardSize {
+		if i != 9 { // Abfrage wegen der Formatierung, sonst ist die 10 komisch aus der Reihe!
+			fmt.Printf(" %d  ", i+1)
+		} else {
+			fmt.Printf("%d  ", i+1)
+		}
+
+		for j := range BoardSize {
+			fmt.Print(RadarField[i][j], "  ")
 		}
 		fmt.Println()
 	}
